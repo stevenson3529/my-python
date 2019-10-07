@@ -1,3 +1,6 @@
+'''
+this program demonstrates Python's many built in functions
+'''
 #A test string
 testString = "I'M SHOUTING!!!!!!!!"
 testString2 = "i'm not"
