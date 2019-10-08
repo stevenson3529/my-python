@@ -22,3 +22,14 @@ Argentina/Buenos Aires
 Canada/Ottawa
 Denmark/Copenhagen
 Iceland/Reykjavik
+Finland/Helsinki
+Russia/Moscow
+China/Beijing
+Japan/Tokyo
+South Korea/Seoul
+North Korea/Pyongyang
+Indonesia/Jakarta
+South Africa/Pretoria(administrative), Cape Town(legislative) and Bloemfontein(judicial)
+Mongolia/Ulaanbaatar
+Montserrat/Plymouth(de jure), Brades(de facto)
+Barbados/Bridgetown
