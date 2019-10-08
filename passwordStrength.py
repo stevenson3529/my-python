@@ -20,6 +20,8 @@ while True:
         messagebox.showwarning("Weak password","Your password is quite weak. Try adding numbers or special characters.")
     elif len(password) < 8:
         messagebox.showwarning("Weak password","Your password is quite weak. Try making it longer.")
+    elif password.isnumeric() == True:
+        messagebox.showwarning("Weak password","Your password is quite weak. Try adding letters and special characters.")
     else:
         messagebox.showinfo("Good password","Your password is strong.")
 
