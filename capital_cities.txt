@@ -1,8 +1,24 @@
-
 Wales/Cardiff
 England/London
 Scotland/Edinburgh
 Spain/Madrid
 France/Paris
 Switzerland/Bern
-yaa land/your butt
+Austria/Vienna
+New Zealand/Wellington
+Australia/Canberra
+UK/London
+Montenegro/Podgorica
+Turkey/Istanbul
+Bulgaria/Sofia
+Hungary/Budapest
+Bosnia & Herzegovina/Sarajevo
+Italy/Rome
+United States/Washington DC
+Mexico/Mexico City
+Brazil/Brasilia
+Uruguay/Montevideo
+Argentina/Buenos Aires
+Canada/Ottawa
+Denmark/Copenhagen
+Iceland/Reykjavik
