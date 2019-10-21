@@ -3,7 +3,7 @@ Program that calculates the total payroll in a company
 '''
 done = False
 #a list of all the salaries
-salaries = [10,50,250,400,30,999555000,189,5050,2000,25,3845,9898]
+salaries = []
 
 #Lets a user add a salary to the list
 while done != True:
