@@ -3,6 +3,8 @@ creating a class of an animal and creating as a virtual pet
 '''
 
 maxWeight = 0
+colours = ['black','white','grey','golden','brown','spotty']
+sizes = ['1','2','3']
 
 class Dog():
     def __init__(self,size,age,weight,name,colour,breed):
@@ -34,6 +36,43 @@ class Dog():
         #obesity()
 
 
-dog1 = Dog(1,59,4,'sasha','black','collie')
-dog1.feed(500)
+dogName = input("Enter the dog's name  >")
+ageDone = False
+weightDone = False
+colourDone = False
+sizeDone = False
+while ageDone != True:
+    input1 = input("Enter the dogs age  >")
+    if input1.isnumeric() == True:
+        dogAge = int(input1)
+        ageDone = True
+    else:
+        print("Not a valid input")
+while weightDone != True:
+    input2 = input("Enter the dogs weight (in kg)  >")
+    if input2.isnumeric() == True:
+        dogWeight = int(input2)
+        weightDone = True
+    else:
+        print("Not a valid input")
+while colourDone != True:
+    input3 = input("Enter the dogs colour  >")
+    if input3 in colours:
+        dogColour = input3
+        colourDone = True
+    else:
+        print("Not a valid input")
+while sizeDone != True:
+    input4 = input("Enter the dogs size(1 for small, 2 for medium, 3 for large)  >")
+    if input4.isnumeric() == True and input4 in sizes:
+        dogSize = int(input4)
+        sizeDone = True
+    else:
+        print("Not a valid input")
+dogBreed = input("enter the dog's breed  >")
+dog1 = Dog(dogSize,dogAge,dogWeight,dogName,dogColour,dogBreed)
+dog1.feed(3)
 dog1.obesity()
+
+
+        
