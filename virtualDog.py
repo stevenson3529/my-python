@@ -3,7 +3,7 @@ creating a class of an animal and creating as a virtual pet
 '''
 
 maxWeight = 0
-colours = ['black','white','grey','golden','brown','spotty']
+colours = ['black','white','grey','golden','brown','spotty','blue','green','pink']
 sizes = ['1','2','3']
 valid = ['1','2','3']
 
@@ -88,10 +88,13 @@ def createDog():
         else:
             print("Not a valid input")
     dogBreed = input("enter the dog's breed  >")
-    #creates the dog object
-    dog1 = Dog(dogSize,dogAge,dogWeight,dogName,dogColour,dogBreed)
-createDog()
-def menu():
+    #returns the attributes of the dog
+    return dogSize, dogAge, dogWeight, dogName,dogColour,dogBreed
+#stores the returned values in a tuple
+retDog = createDog()
+#creates the dog object
+dog2 = Dog(retDog[0],retDog[1],retDog[2],retDog[3],retDog[4],retDog[5])
+while True:
     print("virtual dog")
     print("------------------")
     print("Select an option:")
@@ -111,11 +114,15 @@ def menu():
         amount = input("How many kilometres to walk?  >")
         if amount.isnumeric() == True:
             amount = int(amount)
-            dog1.walk(amount)
+            dog2.walk(amount)
         else:
             print("Not a valid input")
 
-while True:
-    menu()
-
+    if choice == 2:
+        amount = input("How much food to feed? (in kg)  >")
+        if amount.isnumeric() == True:
+            amount = int(amount)
+            dog2.feed(amount)
+        else:
+            print("Not a valid input")
         
