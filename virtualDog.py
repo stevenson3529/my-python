@@ -2,11 +2,18 @@
 creating a class of an animal and creating as a virtual pet
 '''
 
+import time as t
+
 maxWeight = 0
 colours = ['black','white','grey','golden','brown','spotty','blue','green','pink']
 sizes = ['1','2','3']
-valid = ['1','2','3']
+valid = ['1','2','3','4','5']
+global dog2
 
+def l():
+    #adds a blank line
+    print('')
+    
 class Dog():
     def __init__(self,size,age,weight,name,colour,breed):
         #initialiasing attributes
@@ -32,12 +39,23 @@ class Dog():
 
     def feed(self, amount):
         #feeding the pet
-        self.weight = self.weight + (amount / 10)
-        print("my weight is now",self.weight)
+        weightGain = amount /10
+        self.weight = self.weight + weightGain
+        print("my weight increased by",weightGain,"and my weight is now",self.weight)
+        input("Press ENTER to continue...")
 
     def walk(self,distance):
-        self.weight = self.weight - (distance/10)
+        print("Walking dog...")
+        t.sleep(distance)
         print("good walk")
+        weightLoss = distance /10
+        self.weight = self.weight - weightLoss
+        print("I lost",weightLoss,"kilograms and I now weigh",self.weight,"kg.")
+        input("Press ENTER to continue...")
+
+    def info(self):
+        print("My name is",self.name,"and I am",self.age,"years old. I am",self.weight,"kilograms and am a",self.breed)
+        input("Press ENTER to continue...")        
     
 #when adding next method, use SELF!!!!!!!!!!
 #add pet
@@ -53,8 +71,13 @@ class Dog():
 def createDog():
     dogName = input("Enter the dog's name  >")
     if dogName == "skip":
-        dog1 = Dog(2,10,10,"Fred","golden","labrador")
-        return
+        dogName = 'Fred'
+        dogAge = 10
+        dogWeight = 15
+        dogColour = 'black'
+        dogSize = 2
+        dogBreed = 'pitbull'
+        return dogSize, dogAge, dogWeight, dogName,dogColour,dogBreed
     ageDone = False
     weightDone = False
     colourDone = False
@@ -88,19 +111,24 @@ def createDog():
         else:
             print("Not a valid input")
     dogBreed = input("enter the dog's breed  >")
-    #returns the attributes of the dog
+    #returns the information of the dog
     return dogSize, dogAge, dogWeight, dogName,dogColour,dogBreed
+
 #stores the returned values in a tuple
 retDog = createDog()
+    
 #creates the dog object
 dog2 = Dog(retDog[0],retDog[1],retDog[2],retDog[3],retDog[4],retDog[5])
-while True:
-    print("virtual dog")
+
+def menu():
+    l()
+    print("Virtual dog main menu")
     print("------------------")
     print("Select an option:")
     print("1. Walk dog")
     print("2. Feed dog")
-    print("3. Create a different dog")
+    print("3. Information about your dog")
+    print("5. Quit")
     selected = False
     while selected != True:
         choice = input("Enter an option  >")
@@ -108,6 +136,7 @@ while True:
             if choice in valid:
                 choice = int(choice)
                 selected = True
+                l()
         else:
             print("Not a valid choice")
     if choice == 1:
@@ -118,11 +147,24 @@ while True:
         else:
             print("Not a valid input")
 
-    if choice == 2:
+    elif choice == 2:
         amount = input("How much food to feed? (in kg)  >")
         if amount.isnumeric() == True:
             amount = int(amount)
             dog2.feed(amount)
         else:
             print("Not a valid input")
-        
+    elif choice == 3:
+        dog2.info()
+    elif choice == 4:
+        print('no')
+
+    elif choice == 5:
+        bad = True
+        return bad
+
+while True:
+    bad = menu()
+    if bad == True:
+        print("goodbye")
+        break
