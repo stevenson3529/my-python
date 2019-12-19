@@ -23,6 +23,7 @@ class Dog():
         self.weight = weight
         self.colour = colour
         self.breed = breed
+        self.relationship = 50
         
     def obesity(self):
         if self.size == 1:
@@ -55,8 +56,16 @@ class Dog():
 
     def info(self):
         print("I am "+self.name+", a",self.age,"year old",self.breed,"who weighs",self.weight,"kilograms.")
+        print("Our relationship is "+str(self.relationship)+"%")
         input("Press ENTER to continue...")        
-    
+
+    def pet(self,much):
+        print("petting...")
+        t.sleep(much)
+        more = self.relationship + much
+        self.relationship =+ more
+        print("our relationship improved by " + str(much) + "% and is now " + str(self.relationship) + "%")
+        input("Press ENTER to continue...")
 #when adding next method, use SELF!!!!!!!!!!
 #add pet
 #add mood
@@ -129,6 +138,7 @@ def menu():
     print("1. Walk dog")
     print("2. Feed dog")
     print("3. Information about your dog")
+    print("4. Spend time with your dog")
     print("5. Quit")
     selected = False
     while selected != True:
@@ -161,7 +171,12 @@ def menu():
     elif choice == 3:
         dog2.info()
     elif choice == 4:
-        print('no')
+        amount = input("How much time to spend with your dog? (in seconds)  >")
+        if amount.isnumeric() == True:
+            amount = int(amount)
+            dog2.pet(amount)
+        else:
+            print("Not a valid input")
 
     elif choice == 5:
         bad = True
