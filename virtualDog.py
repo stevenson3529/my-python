@@ -39,14 +39,14 @@ class Dog():
 
     def feed(self, amount):
         #feeding the pet
-        weightGain = amount /10
+        weightGain = amount
         self.weight = self.weight + weightGain
         print("my weight increased by",weightGain,"and my weight is now",self.weight)
         input("Press ENTER to continue...")
 
     def walk(self,distance):
         print("Walking dog...")
-        t.sleep(distance)
+        t.sleep(distance / 2)
         print("good walk")
         weightLoss = distance /10
         self.weight = self.weight - weightLoss
@@ -54,7 +54,7 @@ class Dog():
         input("Press ENTER to continue...")
 
     def info(self):
-        print("My name is",self.name,"and I am",self.age,"years old. I am",self.weight,"kilograms and am a",self.breed)
+        print("I am "+self.name+", a",self.age,"year old",self.breed,"who weighs",self.weight,"kilograms.")
         input("Press ENTER to continue...")        
     
 #when adding next method, use SELF!!!!!!!!!!
@@ -70,7 +70,8 @@ class Dog():
 #the user inputs the information about the dog
 def createDog():
     dogName = input("Enter the dog's name  >")
-    if dogName == "skip":
+    dogName = dogName.capitalize()
+    if dogName == "Skip":
         dogName = 'Fred'
         dogAge = 10
         dogWeight = 15
@@ -151,7 +152,10 @@ def menu():
         amount = input("How much food to feed? (in kg)  >")
         if amount.isnumeric() == True:
             amount = int(amount)
-            dog2.feed(amount)
+            if amount < 2:
+                dog2.feed(amount)
+            else:
+                print("Too much food!")
         else:
             print("Not a valid input")
     elif choice == 3:
