@@ -24,25 +24,35 @@ class Dog():
         self.colour = colour
         self.breed = breed
         self.relationship = 50
+        self.thirst = 0
         
+
     def obesity(self):
         if self.size == 1:
             maxWeight = 10
+            minWeight = 1.5
         elif self.size == 2:
             maxWeight = 20
+            minWeight = 5
         elif self.size == 3:
             maxWeight = 30
+            minWeight = 12.5
         if self.weight >= maxWeight:
             print("I am officialy obese")
         elif self.weight < maxWeight:
             print("I am a healthy weight")
+        if self.weight < minWeight:
+            self.weight = minWeight
         
 
     def feed(self, amount):
         #feeding the pet
-        weightGain = amount
+        weightGain = amount / 100
         self.weight = self.weight + weightGain
+        self.thirst += 10
+        dog2.isThirsty()
         print("my weight increased by",weightGain,"and my weight is now",self.weight)
+        dog2.obesity()
         input("Press ENTER to continue...")
 
     def walk(self,distance):
@@ -51,30 +61,56 @@ class Dog():
         print("good walk")
         weightLoss = distance /10
         self.weight = self.weight - weightLoss
+        self.thirst += distance * 2
+        dog2.isThirsty()
+        obesity()
         print("I lost",weightLoss,"kilograms and I now weigh",self.weight,"kg.")
         input("Press ENTER to continue...")
 
     def info(self):
         print("I am "+self.name+", a",self.age,"year old",self.breed,"who weighs",self.weight,"kilograms.")
+        self.thirst += 1
+        dog2.isThirsty()
         print("Our relationship is "+str(self.relationship)+"%")
+        dog2.obesity()
         input("Press ENTER to continue...")        
 
     def pet(self,much):
         print("petting...")
         t.sleep(much)
         more = self.relationship + much
-        self.relationship =+ more
+        self.relationship += more
+        self.thirst += 2
+        dog2.isThirsty()
         print("our relationship improved by " + str(much) + "% and is now " + str(self.relationship) + "%")
         input("Press ENTER to continue...")
+
+    def drink(self):
+        print("Drinking...")
+        t.sleep(self.thirst / 10)
+        self.thirst = 0
+        print("I am no longer thirsty.")
+        input("Press ENTER to continue...")
+        
+        
+    def isThirsty(self):
+        #checks if the dog is thirsty
+        if self.thirst < 70:
+            print("I am not thirsty")
+        elif self.thirst >= 70 and self.thirst < 90:
+            print("I am rather thirsty...")
+        elif self.thirst >= 90 and self.thirst < 100:
+            print("I am very thirsty!")
+        elif self.thirst >= 100:
+            print("I AM EXTREMELY THIRSTY!!!")
+
+           
+
 #when adding next method, use SELF!!!!!!!!!!
-#add pet
 #add mood
 #add hunger
 #add toilet time
 #add commands
-#drinking
-#bed
-
 
 #the user inputs the information about the dog
 def createDog():
@@ -137,9 +173,10 @@ def menu():
     print("Select an option:")
     print("1. Walk dog")
     print("2. Feed dog")
-    print("3. Information about your dog")
-    print("4. Spend time with your dog")
-    print("5. Quit")
+    print("3. Water dog")
+    print("4. Information about your dog")
+    print("5. Spend time with your dog")
+    print("6. Quit")
     selected = False
     while selected != True:
         choice = input("Enter an option  >")
@@ -159,18 +196,20 @@ def menu():
             print("Not a valid input")
 
     elif choice == 2:
-        amount = input("How much food to feed? (in kg)  >")
+        amount = input("How much food to feed? (in grams)  >")
         if amount.isnumeric() == True:
             amount = int(amount)
-            if amount < 2:
+            if amount < 2000:
                 dog2.feed(amount)
             else:
                 print("Too much food!")
         else:
             print("Not a valid input")
     elif choice == 3:
-        dog2.info()
+        dog2.drink()
     elif choice == 4:
+        dog2.info()
+    elif choice == 5:
         amount = input("How much time to spend with your dog? (in seconds)  >")
         if amount.isnumeric() == True:
             amount = int(amount)
@@ -178,7 +217,7 @@ def menu():
         else:
             print("Not a valid input")
 
-    elif choice == 5:
+    elif choice == 6:
         bad = True
         return bad
 
