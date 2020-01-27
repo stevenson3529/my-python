@@ -15,7 +15,7 @@ class Car():
 
     def describe_car(self):
         #returns a description of the car
-        desc = "This car is a %s %s made in %s. It runs on %s power."%(self.colour,self.make,self.year,self.fuel)
+        desc = "This car is a %s %s made in %s. It runs on %s power."%(self.colour,self.make,self.year,self.fuelType)
         return desc
 
     def read_odo(self):
