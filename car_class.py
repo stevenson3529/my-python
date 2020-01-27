@@ -24,9 +24,11 @@ class Car():
         return reading
 
     def update_odo(self,mileage):
+        #adds the recent mileage to the odometer
         self.odometer += mileage
 
     def drive(self):
+        #Take the car for a drive
         originDone = False
         while originDone != True:
             print("Where from?")
@@ -55,6 +57,7 @@ class Battery():
         self.chargeLevel = chargeLevel
 
     def charge(self):
+        #Charging the battery
         timeCharge = 100 - chargeLevel
         timeCharge = timeCharge / 10
         print("charging battery...")
