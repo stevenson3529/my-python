@@ -39,6 +39,7 @@ class Restaurant():
         elif self.cuisine == 'Chinese':
             foods = ['Sweet and sour chicken balls','Noodles','Pork chops']
 
+'''
     def user_menu(self):
         choices = [1,2,3,4]
         print("Main menu")
@@ -49,6 +50,7 @@ class Restaurant():
         print("4. Enter the restaurant")
         done = False
         while done != True:
+           ''' 
         
 
 restaurant1 = Restaurant("English","Brian's chip shop")
