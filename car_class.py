@@ -6,16 +6,15 @@ import time as t
 locations = ['Edinburgh','Glasgow','Greenock','Carlisle','Berwick-upon-Tweed','Newcastle','York','Manchester','Birmingham','Hull','London','Norwich','King\'s Lynn','Southend-on-Sea','Southampton','Exeter','Cardiff','Bristol','Swansea','Fishguard','Llandudno']
 
 class Car():
-    def __init__(self,make,colour,year,odometer,fuelType):
+    def __init__(self,make,colour,year,odometer):
         self.make = make
         self.colour = colour
         self.year = year
         self.odometer = 0
-        self.fuelType = fuelType
 
     def describe_car(self):
         #returns a description of the car
-        desc = "This car is a %s %s made in %s. It runs on %s power."%(self.colour,self.make,self.year,self.fuelType)
+        desc = "This car is a %s %s made in %s."%(self.colour,self.make,self.year)
         return desc
 
     def read_odo(self):
@@ -52,21 +51,33 @@ class Car():
         self.update_odo(toDrive)
 
 class Battery():
-    def __init__(self,maxCharge,chargeLevel):
+    def __init__(self,maxCharge):
         self.maxCharge = maxCharge
-        self.chargeLevel = chargeLevel
+        self.chargeLevel = 0
 
     def charge(self):
         #Charging the battery
-        timeCharge = 100 - chargeLevel
+        timeCharge = 100 - self.chargeLevel
         timeCharge = timeCharge / 10
         print("charging battery...")
         t.sleep(timeCharge)
-        chargeLevel = 100
-        print("Charged!")                   
+        self.chargeLevel = 100
+        print("Charged!")  
 
-car1 = Car("Fiat Panda","Red","2006","65000","Petrol")
-print(car1.describe_car())
-car1.odometer = 90000
-car1.drive()
-print(car1.read_odo())
+class Electric_Car(Car):
+    #creating a sub-class of the Car class
+    def __init__(self,make,colour,year,odometer):
+        #connects to the parent Car class
+        super().__init__(make,colour,year,odometer)
+        self.batt = Battery(2300)
+                 
+
+#car1 = Car("Fiat Panda","Red","2006","65000")
+#print(car1.describe_car())
+#car1.odometer = 90000
+#car1.drive()
+#print(car1.read_odo())
+car2 = Electric_Car("Tesla Model S","Black","2019","10000")
+print(car2.describe_car())
+print(car2.read_odo())
+car2.batt.charge()
