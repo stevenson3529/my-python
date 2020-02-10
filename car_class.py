@@ -11,6 +11,7 @@ class Car():
         self.colour = colour
         self.year = year
         self.odometer = 0
+        self.fuel = 100
 
     def describe_car(self):
         #returns a description of the car
@@ -28,33 +29,54 @@ class Car():
 
     def drive(self):
         #Take the car for a drive
-        originDone = False
-        while originDone != True:
-            print("Where from?")
-            origin = input(">")
-            if origin in locations:
-                originDone = True
-            else:
-                print("no")
-        destDone = False
-        while destDone != True:
-            print("Where to?")
-            dest = input(">")
-            if dest in locations:
-                destDone = True
-            else:
-                print("no")
-        print("How many miles to drive?")
-        toDrive = int(input(">"))
-        print("Driving...")
-        t.sleep(toDrive / 10)
-        self.update_odo(toDrive)
+        if self.fuel > 5:
+            originDone = False
+            while originDone != True:
+                print("Where from?")
+                origin = input(">")
+                if origin in locations:
+                    originDone = True
+                else:
+                    print("no")
+            destDone = False
+            while destDone != True:
+                print("Where to?")
+                dest = input(">")
+                if dest in locations:
+                    destDone = True
+                else:
+                    print("no")
+            print("How many miles to drive?")
+            toDrive = int(input(">"))
+            print("Driving...")
+            t.sleep(toDrive / 10)
+            self.fuel -= todrive / 10
+            self.update_odo(toDrive)
+        else:
+            print("You don't have enough fuel left!")
+
+    def fill_car(self):
+        '''
+        Works out how much fuel the car needs.
+        Example:
+            fuel = 20%
+            100 - 20 = 80
+            80 / 5 = 16 seconds
+        The car will take 16 seconds to fill up.
+        '''
+        timeFill = 100 - self.fuel
+        timeFill = timeFill /5
+        print("Filling car with petrol...")
+        t.sleep(timeFill)
+        self.fuel = 100
+        print("A full tank is a happy tank.")
+        print("Car filled with petrol.")
 
 class Battery():
-    def __init__(self,maxCharge):
+    def __init__(self,maxCharge,chargeLevel):
         self.maxCharge = maxCharge
-        self.chargeLevel = 0
-
+        self.chargeLevel = chargeLevel
+        
     def charge(self):
         #Charging the battery
         timeCharge = 100 - self.chargeLevel
@@ -69,15 +91,21 @@ class Electric_Car(Car):
     def __init__(self,make,colour,year,odometer):
         #connects to the parent Car class
         super().__init__(make,colour,year,odometer)
-        self.batt = Battery(2300)
+        self.batt = Battery(2300,0)
+        self.fuel = 0
+
+    def fill_car(self):
+        self.batt.charge()
                  
 
-#car1 = Car("Fiat Panda","Red","2006","65000")
-#print(car1.describe_car())
-#car1.odometer = 90000
+car1 = Car("Fiat Panda","Red","2006","65000")
+print(car1.describe_car())
+car1.odometer = 90000
 #car1.drive()
-#print(car1.read_odo())
+print(car1.read_odo())
+car1.fuel = 10
+#car1.fill_car()
 car2 = Electric_Car("Tesla Model S","Black","2019","10000")
 print(car2.describe_car())
 print(car2.read_odo())
-car2.batt.charge()
+car2.fill_car()
