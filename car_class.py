@@ -29,28 +29,12 @@ class Car():
 
     def drive(self):
         #Take the car for a drive
-        if self.fuel > 5:
-            originDone = False
-            while originDone != True:
-                print("Where from?")
-                origin = input(">")
-                if origin in locations:
-                    originDone = True
-                else:
-                    print("no")
-            destDone = False
-            while destDone != True:
-                print("Where to?")
-                dest = input(">")
-                if dest in locations:
-                    destDone = True
-                else:
-                    print("no")
-            print("How many miles to drive?")
-            toDrive = int(input(">"))
+        print("How many miles to drive?")
+        toDrive = int(input(">"))
+        if self.fuel >= (toDrive / 10) :
             print("Driving...")
             t.sleep(toDrive / 10)
-            self.fuel -= todrive / 10
+            self.fuel -= toDrive / 10
             self.update_odo(toDrive)
         else:
             print("You don't have enough fuel left!")
@@ -97,7 +81,29 @@ class Electric_Car(Car):
     def fill_car(self):
         self.batt.charge()
                  
+def createCar(carType):
+    initMake = input("What make/model is the car?  >")
+    initColour = input("What colour is the car?  >")
+    initYear
+    if carType == "p":
+        car1 = Car(initMake,initColour,initYear,initOdo)
+    elif carType == "e":
+        car1 = Electric_Car(initMake,initColour,initYear,initOdo)
 
+def chooseType():
+    initType = input("Electric or petrol vehicle?  >")
+    if initType.upper() == "PETROL" or initType.upper == "DIESEL":
+        createPetrolCar("p")
+    elif initType.upper() == "ELECTRIC":
+        createElectricCar("e")
+    else:
+        print("Not a valid input!")
+        chooseType()
+    
+
+chooseType()
+
+'''
 car1 = Car("Fiat Panda","Red","2006","65000")
 print(car1.describe_car())
 car1.odometer = 90000
@@ -109,3 +115,4 @@ car2 = Electric_Car("Tesla Model S","Black","2019","10000")
 print(car2.describe_car())
 print(car2.read_odo())
 car2.fill_car()
+'''
