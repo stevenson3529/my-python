@@ -15,12 +15,14 @@ class Car():
 
     def describe_car(self):
         #returns a description of the car
-        desc = "This car is a %s %s made in %s."%(self.colour,self.make,self.year)
+        print("This car is a %s %s made in %s."%(self.colour,self.make,self.year))
+        input("Press ENTER to continue...")
         return desc
 
     def read_odo(self):
         #reads the odometer
         reading = "This car has done %s miles"%(self.odometer)
+        input("Press ENTER to continue...")
         return reading
 
     def update_odo(self,mileage):
@@ -36,8 +38,11 @@ class Car():
             t.sleep(toDrive / 10)
             self.fuel -= toDrive / 10
             self.update_odo(toDrive)
+            print("Driven %s miles."%(toDrive))
+            input("Press ENTER to continue...")
         else:
             print("You don't have enough fuel left!")
+            input("Press ENTER to continue...")
 
     def fill_car(self):
         '''
@@ -55,6 +60,7 @@ class Car():
         self.fuel = 100
         print("A full tank is a happy tank.")
         print("Car filled with petrol.")
+        input("Press ENTER to continue...")
 
 class Battery():
     def __init__(self,maxCharge,chargeLevel):
@@ -81,27 +87,65 @@ class Electric_Car(Car):
     def fill_car(self):
         self.batt.charge()
                  
-def createCar(carType):
-    initMake = input("What make/model is the car?  >")
+def menu():
+    print("Car menu")
+    print("--------------")
+    print("Select an option:")
+    print()
+    print("1. Drive car")
+    print("2. View information about car")
+    print("3. Read odometer")
+    print("4. Fill up car")
+    print("5. Quit")
+    print()
+    choice = input(">")
+    if choice.isnumeric() == True:
+        choice = int(choice)
+        if choice ==  1:
+            car1.drive()
+        elif choice == 2:
+            print(car1.describe_car())
+        elif choice == 3:
+            print(car1.read_odo())
+        elif choice == 4:
+            car1.fill_car()
+        elif choice == 5:
+            return True
+        else:
+            print("Not a valid input.")
+    else:
+        print("Not a valid input.")
+
+
+
+#Choosing the type of car
+initType = input("Electric or petrol vehicle?  >")
+if initType.upper() == "PETROL" or initType.upper() == "DIESEL":
+    carType = "p"
+elif initType.upper() == "ELECTRIC":
+    carType = "e"
+else:
+    print("Not a valid input!")
+    chooseType()
+
+#Creating the car
+initMake = input("What make/model is the car?  >")
+if initMake == "skip":
+    car1 = Car("Honda Civic","grey","2008","90000")
+else:
     initColour = input("What colour is the car?  >")
-    initYear
+    initYear = input("What year was the car made?  >")
+    initOdo = input("How many miles has the car done?  >")
     if carType == "p":
         car1 = Car(initMake,initColour,initYear,initOdo)
     elif carType == "e":
         car1 = Electric_Car(initMake,initColour,initYear,initOdo)
 
-def chooseType():
-    initType = input("Electric or petrol vehicle?  >")
-    if initType.upper() == "PETROL" or initType.upper == "DIESEL":
-        createPetrolCar("p")
-    elif initType.upper() == "ELECTRIC":
-        createElectricCar("e")
-    else:
-        print("Not a valid input!")
-        chooseType()
-    
-
-chooseType()
+while True:
+    kill = menu()
+    if kill == True:
+        print("Goodbye")
+        break
 
 '''
 car1 = Car("Fiat Panda","Red","2006","65000")
