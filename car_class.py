@@ -144,17 +144,3 @@ while True:
     if kill == True:
         print("Goodbye")
         break
-
-'''
-car1 = Car("Fiat Panda","Red","2006","65000")
-print(car1.describe_car())
-car1.odometer = 90000
-#car1.drive()
-print(car1.read_odo())
-car1.fuel = 10
-#car1.fill_car()
-car2 = Electric_Car("Tesla Model S","Black","2019","10000")
-print(car2.describe_car())
-print(car2.read_odo())
-car2.fill_car()
-'''
