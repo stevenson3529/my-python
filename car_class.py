@@ -10,20 +10,18 @@ class Car():
         self.make = make
         self.colour = colour
         self.year = year
-        self.odometer = 0
+        self.odometer = odometer
         self.fuel = 100
 
     def describe_car(self):
         #returns a description of the car
         print("This car is a %s %s made in %s."%(self.colour,self.make,self.year))
         input("Press ENTER to continue...")
-        return desc
-
+        
     def read_odo(self):
         #reads the odometer
-        reading = "This car has done %s miles"%(self.odometer)
+        print("This car has done %s miles"%(self.odometer))
         input("Press ENTER to continue...")
-        return reading
 
     def update_odo(self,mileage):
         #adds the recent mileage to the odometer
@@ -104,9 +102,9 @@ def menu():
         if choice ==  1:
             car1.drive()
         elif choice == 2:
-            print(car1.describe_car())
+            car1.describe_car()
         elif choice == 3:
-            print(car1.read_odo())
+            car1.read_odo()
         elif choice == 4:
             car1.fill_car()
         elif choice == 5:
