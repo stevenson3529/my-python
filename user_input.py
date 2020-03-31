@@ -1,6 +1,9 @@
 '''
 A module for user inputs, with validation.
 '''
+#A list of answers that mean yes or no:
+yesses = ["y","Y","yes","Yes"]
+nos = ["n","N","No","no"]
 
 #q = question
 #t = type (s = string, n = number, b = boolean)
