@@ -2,9 +2,9 @@
 A program that prints the digits of pi
 '''
 
-filename = 'assets\pi_digits.txt'
+filename = 'assets/pi_digits.txt'
 #opens the file
-with open('assets\pi_digits.txt') as digits_file:
+with open(filename) as digits_file:
     '''
     digits = digits_file.read()
     print(digits)
@@ -25,4 +25,4 @@ for line in lines:
 
 print(pi_string[:56])
 print('----------------')
-print(len(pi_string))
+print(len(pi_string),"characters in file")
