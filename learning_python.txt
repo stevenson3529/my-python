@@ -1,0 +1,6 @@
+In Python you can import modules
+In Python you can create variables
+In Python you can ask for user input
+In Python you can create classes
+In Python you can control Minecraft:Pi Edition
+In Python you can write code for a micro:bit
