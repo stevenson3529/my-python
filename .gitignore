@@ -1,3 +1,5 @@
 Thumbs.db
 *.pyc
 *.lnk
+*.ini
+__pycache__
